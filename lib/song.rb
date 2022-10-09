@@ -15,18 +15,23 @@ class Song
 
     table_info = DB[:conn].execute(sql)
     column_names = []
+    binding.pry
     table_info.each do |row|
+      binding.pry
       column_names << row["name"]
     end
     column_names.compact
   end
 
   self.column_names.each do |col_name|
+    binding.pry
     attr_accessor col_name.to_sym
   end
 
   def initialize(options={})
+    binding.pry
     options.each do |property, value|
+      binding.pry
       self.send("#{property}=", value)
     end
   end
